@@ -8,28 +8,10 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 const root = resolve(__dirname, '..');
 const distDir = resolve(root, 'dist');
 
-const routes = [
-  '/',
-  '/gemini-ai-photo-prompt-copy-paste',
-  '/gemini-ai-photo-prompt-trending',
-  '/gemini-photo-prompt-for-boys',
-  '/gemini-girl-photo-prompt',
-  '/gemini-couple-photo-prompt',
-  '/gemini-ai-photo-prompt-2x2-formal-blue-background',
-  '/gemini-ai-photoshoot-prompt',
-  '/gemini-ai-polaroid-prompt',
-  '/gemini-ai-retro-style-prompt',
-  '/gemini-ai-hairstyle-prompt',
-  '/gemini-ai-halloween-photo-prompt',
-  '/gemini-ai-christmas-photo-prompt',
-  '/gemini-ai-birthday-prompt',
-  '/how-to-write-gemini-ai-photo-prompt',
-  '/about-us',
-  '/contact',
-  '/privacy-policy',
-  '/terms-and-conditions',
-  '/disclaimer',
-];
+// Routes are auto-generated from the page data to ensure every page
+// gets its own prerendered HTML with the correct self-canonical tag.
+// Previously this was a hardcoded list that missed 6 pages, causing them
+// to fall back to the homepage canonical via the SPA catch-all.
 
 async function main() {
   console.log('[prerender] Building SSR bundle...');
@@ -49,7 +31,7 @@ async function main() {
   });
 
   const ssrModule = await import(resolve(distDir, '.ssr', 'entry-server.js'));
-  const { render } = ssrModule;
+  const { render, allRoutes: routes } = ssrModule;
 
   const templatePath = resolve(distDir, 'index.html');
   if (!existsSync(templatePath)) {
