@@ -1,9 +1,28 @@
 {
   "trailingSlash": false,
-  "cleanUrls": true,
+  "redirects": [
+    {
+      "source": "/:path((?:.*/)?[^/]+)/",
+      "destination": "/:path",
+      "permanent": true
+    },
+    {
+      "source": "/:path.html",
+      "destination": "/:path",
+      "permanent": true
+    }
+  ],
   "rewrites": [
     {
-      "source": "/((?!.*\\.html$).*)",
+      "source": "/:path*",
+      "destination": "/:path.html"
+    },
+    {
+      "source": "/",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/:path*",
       "destination": "/index.html"
     }
   ]
