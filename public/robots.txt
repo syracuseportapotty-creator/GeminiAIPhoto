@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://gemini-ai-photo-prompts.vercel.app/sitemap.xml
